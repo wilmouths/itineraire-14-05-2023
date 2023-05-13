@@ -4,19 +4,14 @@ const map = L.map('map', {
   .setView([48.26619724828841, 6.226727942999709], 16)
   .fitWorld();
 
-const point = L.icon({
-  iconUrl: './public/images/point.png',
-  iconSize: [48, 48],
-});
-
 L.Marker.prototype.options.icon = L.icon({
   iconUrl: './public/images/marker.png',
-  iconSize: [48, 48],
+  iconSize: [32, 32],
 });
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '© OpenStreetMap',
+  maxZoom: 16,
+  attribution: '© OpenStreetMap - Itinéraire 14 mars 2023',
 }).addTo(map);
 
 // map.locate({ setView: true, maxZoom: 16 });
@@ -30,6 +25,7 @@ map.on('locationfound', (e) => {
 map.on('locationerror', (e) => alert(e.message));
 
 L.Routing.control({
+  language: 'fr',
   waypoints: [
     L.latLng(48.36988137622209, 6.281687573090697), // Départ
     L.latLng(48.36947664925723, 6.278164423743479),
@@ -92,7 +88,7 @@ L.Routing.control({
       },
       icon: L.icon({
         iconUrl: './public/images/point.png',
-        iconSize: [48, 48],
+        iconSize: [32, 32],
       }),
     });
     return marker;
