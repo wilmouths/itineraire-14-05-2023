@@ -6,7 +6,7 @@ const map = L.map('map', {
 
 L.Marker.prototype.options.icon = L.icon({
   iconUrl: './public/images/marker.png',
-  iconSize: [32, 32],
+  iconSize: [48, 48],
 });
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -50,9 +50,7 @@ L.Routing.control({
     L.latLng(48.323170957250056, 6.117396575266405),
     L.latLng(48.31511334583169, 6.126242620557561),
     L.latLng(48.30803712733447, 6.133523368921545),
-    // L.latLng(48.30365956921731, 6.134352377384311),
     L.latLng(48.302627282856584, 6.136916180032205), // Arrêt midi
-    // L.latLng(48.30065113422189, 6.137580478810998),
     L.latLng(48.30054272384281, 6.142185851844843),
     L.latLng(48.2867029332858, 6.170184494703661),
     L.latLng(48.29399140452149, 6.1825143032410335),
@@ -76,7 +74,42 @@ L.Routing.control({
   ],
   routeWhileDragging: false,
   createMarker: function (i, waypoint, n) {
-    const marker = L.marker(waypoint.latLng, {
+    if (i === 0 || i === (n - 1)) {
+      return L.marker(waypoint.latLng, {
+        draggable: false,
+        bounceOnAdd: true,
+        bounceOnAddOptions: {
+          duration: 1000,
+          height: 800,
+          function() {
+            (bindPopup(myPopup).openOn(map))
+          },
+        },
+        icon: L.icon({
+          iconUrl: './public/images/start_flag.png',
+          iconSize: [32, 32],
+        }),
+      });
+    }
+    if (i === 23) {
+      return L.marker(waypoint.latLng, {
+        draggable: false,
+        bounceOnAdd: true,
+        bounceOnAddOptions: {
+          duration: 1000,
+          height: 800,
+          function() {
+            (bindPopup(myPopup).openOn(map))
+          },
+        },
+        icon: L.icon({
+          iconUrl: './public/images/eating_icon.png',
+          iconSize: [32, 32],
+        }),
+      });
+    }
+
+    return L.marker(waypoint.latLng, {
       draggable: false,
       bounceOnAdd: true,
       bounceOnAddOptions: {
@@ -90,7 +123,15 @@ L.Routing.control({
         iconUrl: './public/images/point.png',
         iconSize: [32, 32],
       }),
-    });
-    return marker;
+    });;
   }
 }).addTo(map);
+
+$(document).ready(function(){
+  $('.tooltipped').tooltip();
+  $('#locate-me').on('click', (e) => {
+    e.preventDefault();
+
+    map.locate({ setView: true, maxZoom: 16 });
+  })
+});

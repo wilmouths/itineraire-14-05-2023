@@ -7,14 +7,22 @@
   <title>Intinéraire: Charmes - Mirecourt - Charmes</title>
   <link rel="stylesheet" href="./public/css/leaflet.css">
   <link rel="stylesheet" href="./public/css/leaflet-routing-machine.css">
+  <link rel="stylesheet" href="./public/css/materialize.min.css">
   <link rel="stylesheet" href="./public/css/app.css">
 </head>
 <body>
-  <div id="map"></div>
-
+  <div id="map">
+    <div class="fixed-action-btn tooltipped" data-position="left" data-tooltip="Me localiser">
+      <a class="btn-floating btn-large waves-effect waves-light blue" id="locate-me">
+        <img src="./public/images/position.png" width="18px" class="locate-me" alt="Me localiser">
+      </a>
+    </div>
+  </div>
+  
   <script src="./public/js/jquery-3.7.0.min.js"></script>
   <script src="./public/js/leaflet.js"></script>
   <script src="./public/js/leaflet-routing-machine.min.js"></script>
+  <script src="./public/js/materialize.min.js"></script>
   <script src="./public/js/app.js"></script>
 </body>
 </html>

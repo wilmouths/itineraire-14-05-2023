@@ -11,3 +11,8 @@ html, body, #map {
 .leaflet-routing-alt h2 {
   display: none;
 }
+
+.locate-me {
+  filter: invert();
+  vertical-align: middle;
+}
