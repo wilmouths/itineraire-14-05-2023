@@ -127,7 +127,7 @@ L.Routing.control({
   }
 }).addTo(map);
 
-$(document).ready(function(){
+$(document).ready(function() {
   $('.tooltipped').tooltip();
   $('#locate-me').on('click', (e) => {
     e.preventDefault();
