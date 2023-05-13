@@ -10,11 +10,11 @@ L.Marker.prototype.options.icon = L.icon({
 });
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 16,
+  maxZoom: 19,
   attribution: '© OpenStreetMap - Itinéraire 14 mars 2023',
 }).addTo(map);
 
-// map.locate({ setView: true, maxZoom: 16 });
+map.locate({ setView: true, maxZoom: 16 });
 
 map.on('locationfound', (e) => {
   L.marker(e.latlng).addTo(map).bindPopup('Vous êtes ici !').openPopup();
